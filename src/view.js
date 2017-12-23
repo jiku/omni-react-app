@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: fontSize.large,
-    fontWeight: 200,
+    fontWeight: "200",
     color: colors.white,
     letterSpacing: 6
   }

@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   currency: {
     fontSize: fontSize.medium,
-    fontWeight: 100,
+    fontWeight: "100",
     color: colors.grey,
     letterSpacing: 4
   }

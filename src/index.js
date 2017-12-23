@@ -1,5 +1,5 @@
 import React from "react";
-import { AppRegistry, View, StyleSheet } from "react-native-web";
+import { AppRegistry, View, StyleSheet } from "react-native";
 
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";

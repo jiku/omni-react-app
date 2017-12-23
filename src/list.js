@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity
-} from "react-native-web";
+} from "react-native";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import numeral from "numeral";

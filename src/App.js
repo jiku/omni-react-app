@@ -1,21 +1,36 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { View, StyleSheet } from "react-native";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+import { ApolloClient } from "apollo-client";
+import { HttpLink } from "apollo-link-http";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloProvider } from "react-apollo";
+
+import ExchangeRateView from "./view";
+import { colors } from "./styles";
+
+const client = new ApolloClient({
+  link: new HttpLink({
+    uri: `https://v7mnw3m03.lp.gql.zone/graphql`
+  }),
+  cache: new InMemoryCache()
+  // for SSR, use:
+  // cache: new Cache().restore(window.__APOLLO_STATE__ || {})
+});
+
+const App = () => (
+  <ApolloProvider client={client}>
+    <View id="root" style={styles.container}>
+      <ExchangeRateView />
+    </View>
+  </ApolloProvider>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    height: "100%", // "100vh",
+    backgroundColor: colors.darkBlue
   }
-}
+});
 
-export default App;
+export default App

@@ -2,8 +2,8 @@
   "name": "@jiku/values-react-app",
   "version": "0.1.0",
   "private": true,
-  "main": "src/index.js",
-  "modules": "src/index.js",
+  "main": "src/App.js",
+  "modules": "src/App.js",
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.4",
     "apollo-client": "^2.0.4",

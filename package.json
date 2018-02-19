@@ -4,12 +4,7 @@
   "private": true,
   "main": "src/App.js",
   "modules": "src/App.js",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
+  "scripts": {},
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.8",
     "apollo-client": "^2.2.4",
@@ -20,8 +15,7 @@
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
-    "react-native-web": "^0.4.0",
-    "react-scripts": "1.1.1"
+    "react-native-web": "^0.4.0"
   },
   "devDependencies": {
     "babel-preset-react-native": "^4.0.0",

@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { graphql } from "react-apollo";
-import gql from "graphql-tag";
+import { gql } from "apollo-boost";
 import numeral from "numeral";
 
 import { fontSize, colors } from "./styles";

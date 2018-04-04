@@ -1,22 +1,11 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-
-import { ApolloClient } from "apollo-client";
-import { HttpLink } from "apollo-link-http";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloProvider } from "react-apollo";
-
 import ExchangeRateView from "./view";
 import { colors } from "./styles";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 
-const client = new ApolloClient({
-  link: new HttpLink({
-    uri: `https://v7mnw3m03.lp.gql.zone/graphql`
-  }),
-  cache: new InMemoryCache()
-  // for SSR, use:
-  // cache: new Cache().restore(window.__APOLLO_STATE__ || {})
-});
+const client = new ApolloClient({ uri: `https://v7mnw3m03.lp.gql.zone/graphql` });
 
 const App = () => (
   <ApolloProvider client={client}>

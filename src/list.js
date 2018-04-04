@@ -1,16 +1,9 @@
-import React, { Component } from "react";
-import {
-  View,
-  ActivityIndicator,
-  StyleSheet,
-  Text,
-  TouchableOpacity
-} from "react-native";
-import { graphql } from "react-apollo";
-import { gql } from "apollo-boost";
-import numeral from "numeral";
-
-import { fontSize, colors } from "./styles";
+import { fontSize, colors } from "./styles"
+import React, { Component } from "react"
+import { View, ActivityIndicator, StyleSheet, Text, TouchableOpacity } from "react-native"
+import { graphql } from "react-apollo"
+import { gql } from "apollo-boost"
+import numeral from "numeral"
 
 const ExchangeRateQuery = gql`
   query rates($currency: String!) {
@@ -22,15 +15,9 @@ const ExchangeRateQuery = gql`
       }
     }
   }
-`;
+`
 
-const ExchangeRateList = ({
-  currency: currentCurrency,
-  onCurrencyChange,
-  rates,
-  error,
-  loading
-}) => (
+const ExchangeRateList = ({ currency: currentCurrency, onCurrencyChange, rates, error, loading }) =>
   <View style={styles.container}>
     {loading ? (
       <ActivityIndicator color={colors.teal} />
@@ -61,7 +48,6 @@ const ExchangeRateList = ({
       <Text>{error && `An error has occurred: ${error}`}</Text>
     )}
   </View>
-);
 
 const styles = StyleSheet.create({
   container: {
@@ -82,25 +68,25 @@ const styles = StyleSheet.create({
     color: colors.grey,
     letterSpacing: 4
   }
-});
+})
 
 export default graphql(ExchangeRateQuery, {
   props: ({ data }) => {
     if (data.loading) {
       return {
         loading: data.loading
-      };
+      }
     }
 
     if (data.error) {
       return {
         error: data.error
-      };
+      }
     }
 
     return {
       loading: false,
       rates: data.rates.rates
-    };
+    }
   }
-})(ExchangeRateList);
+})(ExchangeRateList)

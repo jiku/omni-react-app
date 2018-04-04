@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import ExchangeRateList from "./list";
-import { colors, fontSize } from "./styles";
+import ExchangeRateList from "./list"
+import { colors, fontSize } from "./styles"
+import React, { Component } from "react"
+import { View, Text, StyleSheet } from "react-native"
 
 export default class ExchangeRateView extends Component {
   state = {
     currency: "USD"
-  };
+  }
 
-  onCurrencyChange = currency => this.setState(() => ({ currency }));
+  onCurrencyChange = currency => this.setState(() => ({ currency }))
 
   render() {
-    const { currency } = this.state;
+    const { currency } = this.state
 
     return (
       <View style={styles.container}>
@@ -21,7 +21,7 @@ export default class ExchangeRateView extends Component {
           onCurrencyChange={this.onCurrencyChange}
         />
       </View>
-    );
+    )
   }
 }
 
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
     color: colors.white,
     letterSpacing: 6
   }
-});
+})

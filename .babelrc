@@ -1,8 +1,4 @@
 {
-  "plugins": [
-		"react-native-web",
-		"react-hot-loader"
-  ],
   "presets": [
     "react-native"
   ]

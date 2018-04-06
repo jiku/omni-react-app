@@ -1,29 +1,20 @@
 import ExchangeRateList from "./list"
 import { colors, fontSize } from "./styles"
-import React, { Component } from "react"
-import { View, Text, StyleSheet } from "react-native"
+import React from "react"
+import { View, Text, ActivityIndicator, StyleSheet } from "react-native"
+import { graphql, compose } from 'react-apollo'
+import { gql } from 'apollo-boost'
 
-export default class ExchangeRateView extends Component {
-  state = {
-    currency: "USD"
-  }
+const onCurrencyChange = mutate => currency => e => mutate({ variables: { currency }})
 
-  onCurrencyChange = currency => this.setState(() => ({ currency }))
-
-  render() {
-    const { currency } = this.state
-
-    return (
-      <View style={styles.container}>
-        <Text style={styles.heading}>{`1 ${this.state.currency}`}</Text>
-        <ExchangeRateList
-          currency={currency}
-          onCurrencyChange={this.onCurrencyChange}
-        />
-      </View>
-    )
-  }
-}
+const ExchangeRateView = ({ data: { loading, rates }, mutate }) =>
+  !loading?
+    <View style={styles.container}>
+      <Text style={styles.heading}>{`1 ${rates.currency}`}</Text>
+      <ExchangeRateList currency={rates.currency} onCurrencyChange={onCurrencyChange(mutate)} />
+    </View>
+  :
+    <ActivityIndicator color={colors.teal} />
 
 const styles = StyleSheet.create({
   container: {
@@ -38,3 +29,22 @@ const styles = StyleSheet.create({
     letterSpacing: 6
   }
 })
+
+const GET_RATES = gql`
+  query rates {
+    rates @client {
+      currency
+    }
+  }
+`
+
+const SET_RATE = gql`
+  mutation setRate($currency: Currency) {
+    setRate(currency: $currency) @client
+  }
+`
+
+export default compose(
+  graphql(GET_RATES),
+  graphql(SET_RATE)
+)(ExchangeRateView)

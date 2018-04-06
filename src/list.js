@@ -31,7 +31,7 @@ const ExchangeRateList = ({ currency: currentCurrency, onCurrencyChange, rates, 
         .map(({ currency, rate }, idx, rateArr) => (
           <TouchableOpacity
             accessibilityRole="button"
-            onPress={() => onCurrencyChange(currency)}
+            onPress={onCurrencyChange(currency)}
             style={[
               styles.currencyWrapper,
               idx === rateArr.length - 1 && { borderBottomWidth: 0 }
